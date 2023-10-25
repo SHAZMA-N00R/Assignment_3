@@ -17,6 +17,7 @@ jobs:
       run: |
         echo $GHCR_PAT | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
         REPO_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+        cd mlops
         docker build -t ghcr.io/$REPO_NAME:latest .
         docker push ghcr.io/$REPO_NAME:latest
       env:
