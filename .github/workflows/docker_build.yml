@@ -20,10 +20,10 @@ jobs:
         echo $GHCR_PAT | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
         REPO_NAME=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
         docker build -t ghcr.io/$REPO_NAME:latest .
-        docker push ghcr.io/$REPO_NAME:latest
         echo "Token: $GHCR_PAT"
         echo "Token Scopes: $(curl -s -H "Authorization: token $GHCR_PAT" https://api.github.com/user | jq -r .scopes)"
-     
+        docker push ghcr.io/$REPO_NAME:latest
+        
       env:
         GHCR_PAT: ${{ secrets.GHCR_PAT }}
         
