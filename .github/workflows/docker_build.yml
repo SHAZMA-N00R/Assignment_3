@@ -1,7 +1,7 @@
 name: Build Docker Image
 
 on:
-  commit:
+  push:
     branches:
       - main
 
@@ -15,6 +15,6 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker login ghcr.io -u YOUR_USERNAME -p YOUR_PASSWORD
+        docker login ghcr.io -u SHAZMA-NOOR -p Phd@Fall222
         docker build -t ghcr.io/${{ github.repository }}:latest .
         docker push ghcr.io/${{ github.repository }}:latest
